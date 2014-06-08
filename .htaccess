@@ -1,0 +1,34 @@
+#Gzip
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript text/javascript
+</ifmodule>
+#End Gzip
+
+# BEGIN Expire headers  
+<ifModule mod_expires.c>  
+    ExpiresActive On  
+    ExpiresDefault "access plus 5 seconds"  
+    ExpiresByType image/x-icon "access plus 864000 seconds"  
+    ExpiresByType image/jpeg "access plus 864000 seconds"  
+    ExpiresByType image/png "access plus 864000 seconds"  
+    ExpiresByType image/gif "access plus 864000 seconds"  
+    ExpiresByType application/x-shockwave-flash "access plus 864000 seconds"  
+    ExpiresByType text/css "access plus 21600 seconds"  
+    ExpiresByType text/javascript "access plus 864000 seconds"  
+    ExpiresByType application/javascript "access plus 864000 seconds"  
+    ExpiresByType application/x-javascript "access plus 864000 seconds"  
+    ExpiresByType text/html "access plus 21600 seconds"  
+    ExpiresByType application/xhtml+xml "access plus 21600 seconds"  
+</ifModule>  
+# END Expire headers
+
+#pagespeed
+<IfModule pagespeed_module>
+    ModPageSpeed on
+    ModPagespeedRewriteLevel CoreFilters
+    ModPagespeedEnableFilters prioritize_critical_css
+    ModPagespeedEnableFilters defer_javascript
+    ModPagespeedEnableFilters sprite_images
+    ModPagespeedEnableFilters convert_png_to_jpeg,convert_jpeg_to_webp
+    ModPagespeedEnableFilters collapse_whitespace,remove_comments
+</IfModule>
